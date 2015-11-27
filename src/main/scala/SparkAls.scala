@@ -23,16 +23,15 @@ import java.io.File
 
 object SparkAls {
   
-   private val RUN_JAR="/home/eva/SparkAls/target/scala-2.10/sparkals_2.10-0.1-SNAPSHOT.jar"
-   private val Out_path = "/user/eva/SparkAls/output"
-   private val Out_Hadoop_Path = "hdfs://localhost:8020/user/eva/SparkAls/output"
-   private val In_path  = "hdfs://localhost:8020/user/eva/SparkAls/ratings.dat"
+   private val RUN_JAR="/home/adsctw/SparkAls/target/scala-2.10/sparkals_2.10-0.1-SNAPSHOT.jar"
+   private val Out_path = "/user/adsctw/SparkAls/output"
+   private val Out_Hadoop_Path = "hdfs://sandbox.hortonworks.com:8020/user/adsctw/SparkAls/output"
+   private val In_path  = "hdfs://sandbox.hortonworks.com:8020/user/adsctw/SparkAls/ratings.dat"
    
    
   def setSparkEnv(master:String) : SparkContext = {
 
     val conf = new SparkConf()
-       //.setMaster("spark://craigmbp:7077")
        .setMaster(master)
        .setAppName("SparkAls")
        // runtime Spark Home, set by env SPARK_HOME or explicitly as below
@@ -45,7 +44,6 @@ object SparkAls {
        // find a random port for driver application web-ui
        //.set("spark.ui.port", findAvailablePort.toString)
        //.setJars(findJars)
-       //.setJars(Seq("/Users/cray/Documents/workspace-scala/ScalaParseDate/target/scala-2.10/scalaparsedate_2.10-1.0.jar"))
        //.setJars(Seq(RUN_JAR))
     
        // The coarse-grained mode will instead launch only one long-running Spark task on each Mesos machine,
